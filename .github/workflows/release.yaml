@@ -13,6 +13,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: echo Hello from Octo Organization
+      - name: Gradle build
+        run: |
+          ./gradlew foo -Pfoo=${{secrets.GEHEIM}}
+        
 
 #  build-upstream:
 #    name: ${{ github.event.client_payload.message }}

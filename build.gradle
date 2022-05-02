@@ -17,3 +17,10 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.create('foo') {
+    description("Do some foo")
+}.doLast {
+    println "FOO: >${project.property('foo')}<"
+}
+
