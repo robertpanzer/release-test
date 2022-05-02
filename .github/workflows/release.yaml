@@ -21,7 +21,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
       - name: Gradle build
         run: |
-          ./gradlew clean build -Psigning.keyId=${{secrets.SIGNING_KEY_ID}} -Psigning.password=${{secrets.PASSPHRASE}} -i
+          ./gradlew clean build -Psigning.keyId=${{secrets.GPG_KEY_ID}} -Psigning.password=${{secrets.PASSPHRASE}} -i
       - name: Run a one-line script
         run: echo ls build/libs
 
