@@ -21,6 +21,10 @@ test {
 tasks.create('foo') {
     description("Do some foo")
 }.doLast {
+    String s = project.property('foo')
+    for (final def c in s.toCharArray()) {
+        println c
+    }
     println "FOO: >${project.property('foo')}<"
 }
 
