@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'signing'
 }
 
 group 'org.example'
@@ -27,4 +28,9 @@ tasks.create('foo') {
     }
     println "FOO: >${project.property('foo')}<"
 }
+
+signing {
+    sign configurations.archives
+}
+
 
