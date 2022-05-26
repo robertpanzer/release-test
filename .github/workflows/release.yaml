@@ -3,9 +3,16 @@ on: workflow_dispatch
 env:
   ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.GPG_KEY_ID }}
   ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_PRIVATE_KEY }}
-  ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PASSPHRASE }}
+  ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSPHRASE }}
 jobs:
+  activate:
+    if: github.repository_owner == 'asciidoctor'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Proceed
+        run: echo ok go
   release:
+    needs: activate
     runs-on: ubuntu-latest
     environment: release
     steps:
