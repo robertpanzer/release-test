@@ -1,7 +1,5 @@
-name: Release
-on:
-  workflow_dispatch:
-    inputs: {}
+name: Release Sth
+on: workflow_dispatch
 jobs:
   release:
     runs-on: ubuntu-latest
