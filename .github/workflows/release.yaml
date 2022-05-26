@@ -1,5 +1,9 @@
 name: Release Sth
 on: workflow_dispatch
+env:
+  ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.GPG_KEY_ID }}
+  ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_PRIVATE_KEY }}
+  ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PASSPHRASE }}
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -8,12 +12,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: echo Hello from Octo Organization
-      - name: Set env vars
-        env:
-          A: B
-          #ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.GPG_KEY_ID }}
-          #ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_PRIVATE_KEY }}
-          #ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PASSPHRASE }}
       - name: Gradle build
         run: |
           ./gradlew clean build -i
